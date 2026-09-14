@@ -7,7 +7,6 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 NAV = [
     ("/", "Home"),
     ("/about/", "About"),
-    ("/missions/", "Missions"),
     ("/church-planting/", "Church Planting"),
     ("/education/", "Education"),
     ("/relief/", "Relief"),
@@ -51,9 +50,7 @@ BASE = """<!doctype html>
       <a href="/elim-missions/">Elim Missions</a>
       <a href="/donate/">Donate</a>
       <a href="/contact/">Contact</a>
-      <a href="/wpautoterms/privacy-policy/">Privacy Policy</a>
-      <a href="/wpautoterms/terms-and-conditions/">Terms &amp; Conditions</a>
-    </div>
+      </div>
   </div>
   <div class="footer-small">&copy; Fulani Ministries. All rights reserved.</div>
 </footer>
@@ -191,7 +188,6 @@ page(
 
   <div class="card-grid">
     <div class="card"><h3>Fulani People</h3><p>Who are the Fulani?</p><a href="/fulani-people/">Read more &rarr;</a></div>
-    <div class="card"><h3>Our Story</h3><p>How the ministry began.</p><a href="/story/">Read more &rarr;</a></div>
     <div class="card"><h3>Statement of Faith</h3><p>What we believe.</p><a href="/statement-of-faith/">Read more &rarr;</a></div>
   </div>
 </main>
@@ -222,36 +218,6 @@ page(
   cattle, goats and sheep across the vast dry hinterlands of their domain, keeping
   somewhat separate from local agricultural populations. They inhabit territories over
   an area larger in size than the continental United States.</p>
-</main>
-""",
-    active="/about/",
-)
-
-# ---------------------------------------------------------------- STORY
-page(
-    "/story/",
-    "Our Story | Fulani Ministries",
-    "How Fulani Ministries began, from Boureima Diallo's own testimony of coming to faith and founding the ministry.",
-    """
-<div class="page-header"><h1>Our Story</h1></div>
-<main>
-  <p>Fulani Ministries was born out of the vision God gave to a Fulani Christian,
-  Boureima Diallo, in 1997 in Burkina Faso, West Africa.</p>
-  <p>Boureima was brought up as a Muslim in a large family and first heard about Jesus
-  from a family friend, Adama, when he was thirteen years old. In 1985 he gave his life
-  to Christ &mdash; a decision that brought significant opposition from his wider family
-  and community, but which his own father, remarkably, encouraged.</p>
-  <p>Boureima went on to study Applied Theology and Cross-Cultural Studies at Moorlands
-  College in the UK, and later pursued further theological study in London. In 1997, God
-  called him to leave his studies and dedicate himself fully to reaching the Fulani
-  people with the Gospel &mdash; a calling he fought against before finally saying yes.</p>
-  <p>A number of Fulani Christians became involved, working alongside Boureima, and
-  Fulani Ministries grew into an interdenominational evangelism ministry now reaching
-  Fulani communities in several countries of Sub-Saharan Africa. The ministry&rsquo;s
-  work is centred on the Jam Tan Centre in Burkina Faso, which today combines church
-  planting, education and relief work for the surrounding community.</p>
-  <p>Read Boureima&rsquo;s testimony in full, in his own words, on our
-  <a href="/testimony/">Testimony page</a>.</p>
 </main>
 """,
     active="/about/",
@@ -365,41 +331,6 @@ page(
 """,
 )
 
-# ---------------------------------------------------------------- MISSIONS
-page(
-    "/missions/",
-    "Missions | Fulani Ministries",
-    "Fulani Ministries' three-fold missional vision: faith, relief from poverty, and education for the Fulani people.",
-    """
-<div class="page-header"><h1>Missions</h1></div>
-<main>
-  <p>Fulani Ministries exists to bring the Gospel to the Fulani people &mdash; the
-  largest unreached people group in the world &mdash; while working practically to
-  relieve poverty and promote education in the communities we serve.</p>
-
-  <h2>Our Three-Fold Vision</h2>
-  <ul>
-    <li>To further the Christian faith among the Fulani people</li>
-    <li>To relieve poverty and suffering among the Fulani people</li>
-    <li>To promote education among the Fulani people</li>
-  </ul>
-
-  <p>This vision is worked out through <a href="/church-planting/">church planting and
-  discipleship training</a>, <a href="/education/">education</a> at the Jam Tan Primary
-  &amp; Preschools, and <a href="/relief/">relief work</a> including business training,
-  agriculture and accessible healthcare.</p>
-
-  <h2>In Partnership</h2>
-  <p>Fulani Ministries works in partnership with <a href="/elim-missions/">Elim
-  Missions</a>, who have supported founder Boureima Diallo as a missionary in Burkina
-  Faso for many years, as well as with Compassion International for child sponsorship
-  at the Jam Tan Centre.</p>
-
-  <a class="cta" href="/donate/">Support the Mission</a>
-</main>
-""",
-)
-
 # ---------------------------------------------------------------- CHURCH PLANTING
 page(
     "/church-planting/",
@@ -437,32 +368,6 @@ page(
   <a class="cta" href="/contact/">Get in Touch</a>
 </main>
 """,
-)
-
-# ---------------------------------------------------------------- LATEST CHURCH PLANTING NEWS
-redirect_target = "/church-planting/"
-page(
-    "/latest-church-planting-news/",
-    "Latest Church Planting News | Fulani Ministries",
-    "Church planting milestones and updates from Fulani Ministries' work in Burkina Faso.",
-    f"""
-<div class="page-header"><h1>Latest Church Planting News</h1></div>
-<main>
-  <ul>
-    <li>58 church planters have been trained and empowered to find people of peace and
-    start discovery Bible classes</li>
-    <li>40 churches have resulted from discovery Bible groups &mdash; 5&ndash;15
-    converts in each church</li>
-    <li>37 other discovery Bible groups are on the path to becoming a church</li>
-    <li>A discipleship and training centre has been built in Burkina Faso, named the
-    Jam Tan Centre</li>
-    <li>At Easter, the church at the Jam Tan Centre baptised 32 people</li>
-  </ul>
-  <p>For the fuller picture of our discipleship and church planting work, see the
-  <a href="{redirect_target}">Church Planting</a> page.</p>
-</main>
-""",
-    active="/church-planting/",
 )
 
 # ---------------------------------------------------------------- EDUCATION
@@ -604,37 +509,9 @@ page(
 """,
 )
 
-# ---------------------------------------------------------------- LEGAL STUBS
-page(
-    "/wpautoterms/privacy-policy/",
-    "Privacy Policy | Fulani Ministries",
-    "Fulani Ministries privacy policy.",
-    """
-<div class="page-header"><h1>Privacy Policy</h1></div>
-<main>
-  <p>This page is being updated following the rebuild of our website. In the meantime,
-  if you have any questions about how we handle your data, please
-  <a href="/contact/">contact us</a> directly.</p>
-</main>
-""",
-)
-
-page(
-    "/wpautoterms/terms-and-conditions/",
-    "Terms and Conditions | Fulani Ministries",
-    "Fulani Ministries terms and conditions.",
-    """
-<div class="page-header"><h1>Terms &amp; Conditions</h1></div>
-<main>
-  <p>This page is being updated following the rebuild of our website. In the meantime,
-  if you have any questions, please <a href="/contact/">contact us</a> directly.</p>
-</main>
-""",
-)
-
 # ---------------------------------------------------------------- LEGACY REDIRECTS
 redirect("/about/fulani-people/", "/fulani-people/")
-redirect("/about/missions/", "/missions/")
+redirect("/about/missions/", "/about/")
 redirect("/about/statement-of-faith/", "/statement-of-faith/")
 redirect("/about/projects/", "/relief/")
 redirect("/contact-us/", "/contact/")
