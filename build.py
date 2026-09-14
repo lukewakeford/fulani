@@ -62,15 +62,17 @@ REDIRECT = """<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url={target}">
+<meta http-equiv="refresh" content="0; url={local_target}">
 <link rel="canonical" href="https://fulaniministries.org{target}">
 <title>Redirecting&hellip;</title>
 </head>
 <body>
-<p>This page has moved to <a href="{target}">{target}</a>.</p>
+<p>This page has moved to <a href="{local_target}">{target}</a>.</p>
 </body>
 </html>
 """
+
+import re
 
 def navlinks_html(active):
     parts = []
@@ -78,6 +80,24 @@ def navlinks_html(active):
         cls = ' class="active"' if href == active else ""
         parts.append(f'<a href="{href}"{cls}>{label}</a>')
     return "\n      ".join(parts)
+
+def depth_of(path):
+    trimmed = path.strip("/")
+    return 0 if trimmed == "" else trimmed.count("/") + 1
+
+def relativize(html, path):
+    """Rewrite root-relative href="/..." and src="/..." into path-relative
+    links, so the site works both at a subpath (e.g. github.io/fulani/) and
+    at a domain root. Absolute URLs (https://...) are left untouched."""
+    depth = depth_of(path)
+    prefix = "../" * depth
+
+    def repl(match):
+        attr, target = match.group(1), match.group(2)
+        local = prefix + target.lstrip("/") if target != "/" else (prefix or "./")
+        return f'{attr}="{local}"'
+
+    return re.sub(r'(href|src)="(/[^"]*)"', repl, html)
 
 def page(path, title, description, body_html, active=None):
     html = BASE.format(
@@ -87,13 +107,17 @@ def page(path, title, description, body_html, active=None):
         navlinks=navlinks_html(active or path),
         body=body_html,
     )
+    html = relativize(html, path)
     out_dir = os.path.join(ROOT, path.strip("/"))
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, "index.html"), "w") as f:
         f.write(html)
 
 def redirect(path, target):
-    html = REDIRECT.format(target=target)
+    depth = depth_of(path)
+    prefix = "../" * depth
+    local_target = prefix + target.lstrip("/") if target != "/" else (prefix or "./")
+    html = REDIRECT.format(target=target, local_target=local_target)
     out_dir = os.path.join(ROOT, path.strip("/"))
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, "index.html"), "w") as f:
