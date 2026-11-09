@@ -169,3 +169,98 @@ blockquote {
   font-style: italic;
   background: #fff;
 }
+
+/* Donate button in the main nav */
+nav.main-nav { align-items: center; }
+
+nav.main-nav a.nav-donate {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--rust);
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border-bottom: none;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+nav.main-nav a.nav-donate:hover,
+nav.main-nav a.nav-donate.active {
+  background: var(--rust-dark);
+  color: #fff;
+  border-bottom: none;
+}
+
+nav.main-nav a.nav-donate:hover { transform: translateY(-1px); }
+
+/* Donate page giving options */
+.lead { font-size: 1.1rem; }
+
+.give-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.give-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-top: 5px solid var(--rust);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(43, 35, 32, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.give-card.alt { border-top-color: var(--teal); }
+
+.give-card:hover {
+  text-decoration: none;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(43, 35, 32, 0.12);
+}
+
+.give-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #f7e6dc;
+  color: var(--rust);
+  margin-bottom: 1rem;
+}
+
+.give-card.alt .give-icon { background: #dcedee; color: var(--teal); }
+
+.give-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.give-card h3 { margin: 0.25rem 0 0.5rem; color: var(--rust); font-size: 1.3rem; }
+.give-card.alt h3 { color: var(--teal-dark); }
+
+.give-card p { margin: 0 0 1.25rem; flex: 1; }
+
+.give-action {
+  align-self: flex-start;
+  background: var(--rust);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.6rem 1.3rem;
+  border-radius: 4px;
+}
+
+.give-card.alt .give-action { background: var(--teal); }
+.give-card:hover .give-action { background: var(--rust-dark); }
+.give-card.alt:hover .give-action { background: var(--teal-dark); }

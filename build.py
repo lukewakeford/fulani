@@ -78,6 +78,13 @@ def navlinks_html(active):
     for href, label in NAV:
         cls = ' class="active"' if href == active else ""
         parts.append(f'<a href="{href}"{cls}>{label}</a>')
+    donate_cls = "nav-donate active" if active == "/donate/" else "nav-donate"
+    parts.append(
+        f'<a class="{donate_cls}" href="/donate/">'
+        f'<svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">'
+        f'<path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>'
+        f'</svg>Donate</a>'
+    )
     return "\n      ".join(parts)
 
 def depth_of(path):
@@ -451,15 +458,34 @@ page(
     """
 <div class="page-header"><h1>Donate</h1></div>
 <main>
-  <p>Please consider donating to support the work of Fulani Ministries at the Jam Tan
-  Centre in West Africa. Every gift helps us grow this ministry.</p>
-  <p>You can give via <a href="https://www.stewardship.org.uk" target="_blank" rel="noopener">Stewardship.org.uk</a>,
-  or <a href="/contact/">contact us</a> directly for UK bank transfer details.</p>
-  <p class="footer-small" style="text-align:left;color:var(--muted)">
-    Note: for security, we no longer publish bank account details directly on this
-    page &mdash; please contact us to receive current, verified payment details.
-  </p>
-  <a class="cta" href="/contact/">Contact Us to Donate</a>
+  <p class="lead">Please consider donating to support the work of Fulani Ministries at
+  the Jam Tan Centre in West Africa. Every gift helps us grow this ministry.</p>
+
+  <div class="give-grid">
+    <a class="give-card" href="https://buy.stripe.com/aEU3eIgEyegj4la5kk" target="_blank" rel="noopener">
+      <span class="give-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+      </span>
+      <span class="give-label">Give online</span>
+      <h3>Donate by card</h3>
+      <p>A quick, secure one-off gift by debit or credit card, processed by Stripe.</p>
+      <span class="give-action">Give now <span aria-hidden="true">&rarr;</span></span>
+    </a>
+    <a class="give-card alt" href="https://www.stewardship.org.uk/partners/20042822" target="_blank" rel="noopener">
+      <span class="give-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      </span>
+      <span class="give-label">UK supporters</span>
+      <h3>Give via Stewardship</h3>
+      <p>Set up a one-off or regular gift through Stewardship, and add Gift Aid if you
+      are a UK taxpayer.</p>
+      <span class="give-action">Go to Stewardship <span aria-hidden="true">&rarr;</span></span>
+    </a>
+  </div>
+
+  <p>Prefer a bank transfer? <a href="/contact/">Contact us</a> and we&rsquo;ll send you
+  current, verified payment details. For security, we don&rsquo;t publish bank account
+  details on this site.</p>
 </main>
 """,
 )
